@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Serverless Registration System with JWT and CI/CD
 
 ## Overview
