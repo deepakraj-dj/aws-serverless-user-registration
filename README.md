@@ -41,8 +41,8 @@ AWS credentials are stored as GitHub Secrets.
 
 | Method | Route | Description |
 |--------|-------|-------------|
-| POST | /signup | Creates new user |
-| POST | /login | Returns token |
+| POST | /signup | Creates new user and return token |
+
 
 ## How to Deploy
 
