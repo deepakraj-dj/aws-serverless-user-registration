@@ -35,7 +35,7 @@ def lambda_handler(event,context):
             }
             )
      
-        
+
     except Exception as d:
         print(f"Something Went Wrong,{d} Could not be inserted")
         return {
