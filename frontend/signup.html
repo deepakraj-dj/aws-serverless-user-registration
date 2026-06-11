@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Static Website</title>
+  <style>
+    body { 
+      background-color: cadetblue;
+      font-family: sans-serif;
+      color: white;
+    }
+    form { text-align: center; margin-top: 50px; }
+    
+    .bta {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: white;
+      color: cadetblue;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+    } /* Added missing bracket here */
+  </style>
+</head>
+<body>
+  <form id="loginForm">
+    <h1>SIGNUP FORM</h1><br><br>
+    <input type="text" id="username" placeholder="Create an Username" required /><br><br>
+    <input type="password" id="password" placeholder="Create an Password" required /><br><br>
+    <input type="email" id="email" placeholder="Email ID" required /><br><br>
+
+    <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <!-- max="2026-05-24" locks it to today's date -->
+        <input 
+            type="date" 
+            id="dob" 
+            name="dob" 
+            min="1900-01-01" 
+            max="2026-05-24" 
+            required
+        >
+    </div>
+    
+    <input type="submit" value="Submit" class="bta">
+    <h5>Already have an account? <a href="login.html"> Login</a></h5>
+  </form>
+ 
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", async function(e) {
+      e.preventDefault(); // prevent page reload
+
+      // Correct IDs
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const email = document.getElementById("email").value;
+      const dob = document.getElementById("dob").value;
+
+      try {
+        const response = await fetch("https://xtbhx2mpsh.execute-api.us-east-1.amazonaws.com/dev/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password, email, dob })
+        });
+
+        const result = await response.json();
+        console.log("API Response:", result);
+        alert("Signup response: " + JSON.stringify(result));
+        
+        // This clears all the input fields after the user clicks "OK" on the alert
+        e.target.reset();
+
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Something went wrong!");
+      }
+    });
+  </script>
+</body>
+</html>
