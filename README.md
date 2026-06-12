@@ -52,4 +52,22 @@ AWS credentials are stored as GitHub Secrets.
 =======
 # aws-serverless-user-registration
 Serverless user registration on AWS using Lambda, API Gateway, DynamoDB, S3, CloudFront, and GitHub Actions CI/CD with JWT authentication.
->>>>>>> 5967d04227a95f16fcae69bd058e6e31358d4655
+
+#Files
+
+.
+├── .github/                      
+│   └── workflows
+│       ├── Backend.yml
+│       └── Frontend.yml
+├── backend/                  
+|   └── registerform_final.py
+├── docs/
+│   └── Architecture_diagram.png
+├── frontend
+│   └── signup.html
+├── LICENSE
+├── README.md
+
+
+
