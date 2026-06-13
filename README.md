@@ -38,32 +38,31 @@ cd aws-serverless-user-registration
 - Click Create
 
 ### Step 3: Create S3 Bucket (Console)
-Go to S3 → Create Bucket
-Name: your-unique-bucket-name-registration
-Block public access: Uncheck "Block all public access"
-Upload frontend/signup.html to bucket
-Go to Bucket Properties → Static website hosting → Enable
-Set index document: signup.html
+- Go to S3 → Create Bucket
+- Name: your-unique-bucket-name-registration
+- Block public access: Uncheck "Block all public access"
+- Upload frontend/signup.html to bucket
+- Go to Bucket Properties → Static website hosting → Enable
+- Set index document: signup.html
 
 ### Step 4: Create CloudFront Distribution (Console)
-Go to CloudFront → Create Distribution
-Origin domain: Select your S3 bucket
-Viewer protocol: Redirect HTTP to HTTPS
-Cache policy: CachingOptimized
-Click Create
-Copy CloudFront domain (e.g., d123xyz.cloudfront.net)
+- Go to CloudFront → Create Distribution
+- Origin domain: Select your S3 bucket
+- Viewer protocol: Redirect HTTP to HTTPS
+- Cache policy: CachingOptimized
+- Click Create
+- Copy CloudFront domain (e.g., d123xyz.cloudfront.net)
 
 ### Step 5: Create Lambda Function (Console)
-Go to Lambda → Create Function
-Function name: user-registration
-Runtime: Python 3.9
-Execution role: Create new role with DynamoDB access
-Paste code from backend/registerform_final.py into editor
-Add layer for dependencies:
-
-Create ZIP with bcrypt and PyJWT libraries
-Go to Layers → Create layer → Upload ZIP
-Attach layer to your function
+- Go to Lambda → Create Function
+- Function name: user-registration
+- Runtime: Python 3.9
+- Execution role: Create new role with DynamoDB access
+- Paste code from backend/registerform_final.py into editor
+- Add layer for dependencies:
+  - Create ZIP with bcrypt and PyJWT libraries 
+  - Go to Layers → Create layer → Upload ZIP
+  - Attach layer to your function
 
 
 Set environment variables:
