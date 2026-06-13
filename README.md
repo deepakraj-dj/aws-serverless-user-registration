@@ -94,9 +94,11 @@ cd aws-serverless-user-registration
 - Workflows will auto-trigger on push
 
 ### Step 9: Test
-bashcurl -X POST https://abc123.execute-api.us-east-1.amazonaws.com/prod/signup \
+```bash
+curl -X POST https://abc123.execute-api.us-east-1.amazonaws.com/prod/signup \
   -H "Content-Type: application/json" \
   -d '{"email":"test@example.com","password":"securepass123"}'
+```
 Or visit https://d123xyz.cloudfront.net and submit the form.
 
 ## Security
