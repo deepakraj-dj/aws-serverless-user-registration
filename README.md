@@ -20,7 +20,7 @@ backend. Path-specific triggers mean a CSS change won't kick off a Lambda deploy
 AWS credentials are stored as GitHub Secrets.
 
 
-## Architecture
+## Architecture Diagram
 
 ![Architecture Diagram](docs/Architecture_diagram.png)
 
@@ -49,7 +49,7 @@ AWS credentials are stored as GitHub Secrets.
 
 ## Security Considerations
 
-=======
+
 # aws-serverless-user-registration
 Serverless user registration on AWS using Lambda, API Gateway, DynamoDB, S3, CloudFront, and GitHub Actions CI/CD with JWT authentication.
 
