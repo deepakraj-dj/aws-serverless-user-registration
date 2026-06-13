@@ -73,29 +73,25 @@ cd aws-serverless-user-registration
 - Enable CORS:
   - Right-click /signup → Enable CORS
   - Access-Control-Allow-Origin: https://d123xyz.cloudfront.net (your CloudFront domain)
-
-
-Deploy API → Stage name: prod
-Copy API invoke URL (e.g., https://abc123.execute-api.us-east-1.amazonaws.com/prod)
+- Deploy API → Stage name: prod
+- Copy API invoke URL (e.g., https://abc123.execute-api.us-east-1.amazonaws.com/prod)
 
 ### Step 7: Update Frontend (in S3)
-Edit signup.html → Change API endpoint:
-javascript// In your HTML/JS, update:
-const API_URL = 'https://abc123.execute-api.us-east-1.amazonaws.com/prod/signup';
-Upload updated signup.html back to S3 bucket.
+- Edit signup.html → Change API endpoint:
+- javascript// In your HTML/JS, update:
+- const API_URL = 'https://abc123.execute-api.us-east-1.amazonaws.com/prod/signup';
+- Upload updated signup.html back to S3 bucket.
+
 ### Step 8: Setup GitHub Actions (Console)
-
-Go to your GitHub repo → Settings → Secrets and variables → Actions
-Click "New repository secret" → Add:
-
-AWS_ACCESS_KEY_ID (from your AWS IAM user)
-AWS_SECRET_ACCESS_KEY (from your AWS IAM user)
-AWS_REGION (e.g., us-east-1)
-S3_BUCKET (your bucket name)
-LAMBDA_FUNCTION_NAME (user-registration)
-
-
-Workflows will auto-trigger on push
+- Go to your GitHub repo → Settings → Secrets and variables → Actions
+- Click "New repository secret" → Add:
+    - AWS_ACCESS_KEY_ID (from your AWS IAM user)
+    - AWS_SECRET_ACCESS_KEY (from your AWS IAM user)
+    - AWS_REGION (e.g., us-east-1)
+    - S3_BUCKET (your bucket name)
+    - LAMBDA_FUNCTION_NAME (user-registration)
+      
+- Workflows will auto-trigger on push
 
 ### Step 9: Test
 bashcurl -X POST https://abc123.execute-api.us-east-1.amazonaws.com/prod/signup \
@@ -103,7 +99,7 @@ bashcurl -X POST https://abc123.execute-api.us-east-1.amazonaws.com/prod/signup 
   -d '{"email":"test@example.com","password":"securepass123"}'
 Or visit https://d123xyz.cloudfront.net and submit the form.
 
-Security
+## Security
 ✅ Bcrypt Hashing — Passwords never stored plain text (10 salt rounds)
 
 ✅ HTTPOnly Cookies — JWT set with httponly flag, prevents XSS/JavaScript access
@@ -116,48 +112,13 @@ Security
 
 ✅ Secrets in GitHub — AWS credentials never in code (use GitHub Secrets)
 
-⚠️ TODO: Add input validation (email format, password strength), implement login endpoint with JWT verification
-What I Learned
+## What I Learned
 
-Serverless Architecture: Eliminated server management—Lambda auto-scales, no cold servers, pay-per-execution model
-Stateless Auth: JWT tokens enable horizontal scaling—no session storage needed
-Security Best Practices: Bcrypt, httponly cookies, IAM least privilege access
-CI/CD Automation: GitHub Actions trigger conditional deployments (path filters reduce unnecessary builds)
-AWS Service Integration: Understood data flow across 6+ services (API Gateway → Lambda → DynamoDB)
-
-
-## Architecture Diagram
-
-
-
-## Tech Stack
-
-- AWS Cloudfront
-- S3
-- API Gateway
-- AWS Lambda (Python)
-- DynamoDB
-- JWT
-- Bcrypt
-- CI/CD
-- Github Actions
-- Github Secrets
-
-## Endpoints
-
-| Method | Route | Description |
-|--------|-------|-------------|
-| POST | /signup | Creates new user and return token |
-
-
-## How to Deploy
-
-
-## Security Considerations
-
-
-# aws-serverless-user-registration
-Serverless user registration on AWS using Lambda, API Gateway, DynamoDB, S3, CloudFront, and GitHub Actions CI/CD with JWT authentication.
+- Serverless Architecture: Eliminated server management—Lambda auto-scales, no cold servers, pay-per-execution model
+- Stateless Auth: JWT tokens enable horizontal scaling—no session storage needed
+- Security Best Practices: Bcrypt, httponly cookies, IAM least privilege access
+- CI/CD Automation: GitHub Actions trigger conditional deployments (path filters reduce unnecessary builds)
+- AWS Service Integration: Understood data flow across 6+ services (API Gateway → Lambda → DynamoDB)
 
 ## File Structure
 ```
