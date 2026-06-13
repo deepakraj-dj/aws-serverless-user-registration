@@ -23,18 +23,19 @@ Fully serverless auth system with zero EC2 instances. Frontend served via S3 + C
 
 Free Tier Note: DynamoDB read/write, Lambda invocations, API calls, and CloudFront transfers covered by AWS free tier. Monitor usage to avoid charges.
 
-## Get It Running (10 Minutes)
+## Get It Running 
+
 ### Step 1: Clone & Setup
 ```bash
 git clone https://github.com/yourusername/aws-serverless-user-registration.git
 cd aws-serverless-user-registration
 ```
 ### Step 2: Create DynamoDB Table (Console)
-Go to AWS Console → DynamoDB → Create Table
-Table name: users
-Partition key: email (String)
-Billing mode: Pay-per-request
-Click Create
+- Go to AWS Console → DynamoDB → Create Table
+- Table name: users
+- Partition key: email (String)
+- Billing mode: Pay-per-request
+- Click Create
 
 ### Step 3: Create S3 Bucket (Console)
 Go to S3 → Create Bucket
