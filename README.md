@@ -25,8 +25,8 @@ Free Tier Note: DynamoDB read/write, Lambda invocations, API calls, and CloudFro
 
 ## Get It Running (10 Minutes)
 ### Step 1: Clone & Setup
-```
-bashgit clone https://github.com/yourusername/aws-serverless-user-registration.git
+```bash
+git clone https://github.com/yourusername/aws-serverless-user-registration.git
 cd aws-serverless-user-registration
 ```
 
