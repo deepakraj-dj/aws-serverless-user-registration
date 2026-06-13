@@ -64,25 +64,15 @@ cd aws-serverless-user-registration
   - Go to Layers → Create layer → Upload ZIP
   - Attach layer to your function
 
-
-Set environment variables:
-
-TABLE_NAME=users
-JWT_SECRET=your-secret-key-here
-
-
-Click Deploy
-
 ### Step 6: Create API Gateway (Console)
 
-Go to API Gateway → Create API → REST API
-Name: registration-api
-Create resource: /signup
-Create POST method → Lambda integration → Select user-registration
-Enable CORS:
-
-Right-click /signup → Enable CORS
-Access-Control-Allow-Origin: https://d123xyz.cloudfront.net (your CloudFront domain)
+- Go to API Gateway → Create API → REST API
+- Name: registration-api
+- Create resource: /signup
+- Create POST method → Lambda integration → Select user-registration
+- Enable CORS:
+  - Right-click /signup → Enable CORS
+  - Access-Control-Allow-Origin: https://d123xyz.cloudfront.net (your CloudFront domain)
 
 
 Deploy API → Stage name: prod
