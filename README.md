@@ -127,16 +127,15 @@ Or visit https://d123xyz.cloudfront.net and submit the form.
 .
 ├── .github/                      
 │   └── workflows
-│       ├── Backend.yml
-│       └── Frontend.yml
+│       ├── Backend.yml               # CI/CD: Auto-deploy Lambda on code push
+│       └── Frontend.yml              # CI/CD: Auto-deploy to S3 & invalidate CloudFront
 ├── backend/                  
-|   └── registerform_final.py
+|   └── registerform_final.py         # Lambda handler: User registration with JWT auth
 ├── docs/
-│   └── Architecture_diagram.png
+│   └── Architecture_diagram.png      # Full system architecture flo
 ├── frontend
-│   └── signup.html
+│   └── signup.html                   # HTML form: User registration UI
 ├── LICENSE
-├── README.md
+├── README.md                         # Project documentation & setup guide
 
-```
 
