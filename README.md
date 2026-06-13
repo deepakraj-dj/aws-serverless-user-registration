@@ -1,4 +1,4 @@
-### Serverless User Registration with JWT & CI/CD
+# Serverless User Registration with JWT & CI/CD
 
 ## Overview
 Fully serverless auth system with zero EC2 instances. Frontend served via S3 + CloudFront. Backend: Lambda functions behind API Gateway. DynamoDB stores user data. Passwords hashed with bcrypt, JWTs for stateless sessions. GitHub Actions automates deployment—separate pipelines for frontend/backend with path-based triggers.
