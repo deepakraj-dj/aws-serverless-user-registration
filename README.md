@@ -29,44 +29,90 @@ Free Tier Note: DynamoDB read/write, Lambda invocations, API calls, and CloudFro
 git clone https://github.com/yourusername/aws-serverless-user-registration.git
 cd aws-serverless-user-registration
 ```
+### Step 2: Create DynamoDB Table (Console)
+Go to AWS Console → DynamoDB → Create Table
+Table name: users
+Partition key: email (String)
+Billing mode: Pay-per-request
+Click Create
 
-### Step 2: Create AWS Resources
+### Step 3: Create S3 Bucket (Console)
+Go to S3 → Create Bucket
+Name: your-unique-bucket-name-registration
+Block public access: Uncheck "Block all public access"
+Upload frontend/signup.html to bucket
+Go to Bucket Properties → Static website hosting → Enable
+Set index document: signup.html
 
-bash# Create DynamoDB table
-```
-aws dynamodb create-table \
-  --table-name users \
-  --attribute-definitions AttributeName=email,AttributeType=S \
-  --key-schema AttributeName=email,KeyType=HASH \
-  --billing-mode PAY_PER_REQUEST
-```
-# Create S3 bucket for frontend
-aws s3 mb s3://your-unique-bucket-name
+### Step 4: Create CloudFront Distribution (Console)
+Go to CloudFront → Create Distribution
+Origin domain: Select your S3 bucket
+Viewer protocol: Redirect HTTP to HTTPS
+Cache policy: CachingOptimized
+Click Create
+Copy CloudFront domain (e.g., d123xyz.cloudfront.net)
 
-# Deploy Lambda function (package with bcrypt + jwt dependencies)
-```
-cd backend
-pip install -r requirements.txt -t package/
-cd package && zip -r ../lambda.zip . && cd ..
-zip lambda.zip registerform_final.py
-aws lambda create-function --function-name user-registration \
-  --runtime python3.9 --role arn:aws:iam::YOUR_ACCOUNT_ID:role/lambda-exec \
-  --handler registerform_final.lambda_handler --zip-file fileb://lambda.zip
-```
-Step 3: Connect API Gateway to Lambda
-bash# Create API Gateway
-aws apigateway create-rest-api --name registration-api
-# (Use AWS Console to map POST /signup → Lambda)
-Step 4: Setup GitHub Actions
+### Step 5: Create Lambda Function (Console)
+Go to Lambda → Create Function
+Function name: user-registration
+Runtime: Python 3.9
+Execution role: Create new role with DynamoDB access
+Paste code from backend/registerform_final.py into editor
+Add layer for dependencies:
 
-Go to repo Settings → Secrets and variables → Actions
-Add: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION
-Workflows auto-trigger on push to backend/ or frontend/ paths
+Create ZIP with bcrypt and PyJWT libraries
+Go to Layers → Create layer → Upload ZIP
+Attach layer to your function
 
-Step 5: Test
-bashcurl -X POST https://YOUR_API_GATEWAY_URL/signup \
+
+Set environment variables:
+
+TABLE_NAME=users
+JWT_SECRET=your-secret-key-here
+
+
+Click Deploy
+
+### Step 6: Create API Gateway (Console)
+
+Go to API Gateway → Create API → REST API
+Name: registration-api
+Create resource: /signup
+Create POST method → Lambda integration → Select user-registration
+Enable CORS:
+
+Right-click /signup → Enable CORS
+Access-Control-Allow-Origin: https://d123xyz.cloudfront.net (your CloudFront domain)
+
+
+Deploy API → Stage name: prod
+Copy API invoke URL (e.g., https://abc123.execute-api.us-east-1.amazonaws.com/prod)
+
+### Step 7: Update Frontend (in S3)
+Edit signup.html → Change API endpoint:
+javascript// In your HTML/JS, update:
+const API_URL = 'https://abc123.execute-api.us-east-1.amazonaws.com/prod/signup';
+Upload updated signup.html back to S3 bucket.
+### Step 8: Setup GitHub Actions (Console)
+
+Go to your GitHub repo → Settings → Secrets and variables → Actions
+Click "New repository secret" → Add:
+
+AWS_ACCESS_KEY_ID (from your AWS IAM user)
+AWS_SECRET_ACCESS_KEY (from your AWS IAM user)
+AWS_REGION (e.g., us-east-1)
+S3_BUCKET (your bucket name)
+LAMBDA_FUNCTION_NAME (user-registration)
+
+
+Workflows will auto-trigger on push
+
+### Step 9: Test
+bashcurl -X POST https://abc123.execute-api.us-east-1.amazonaws.com/prod/signup \
   -H "Content-Type: application/json" \
-  -d '{"email":"user@example.com","password":"secure123"}'
+  -d '{"email":"test@example.com","password":"securepass123"}'
+Or visit https://d123xyz.cloudfront.net and submit the form.
+
 Security
 ✅ Bcrypt Hashing — Passwords never stored plain text (10 salt rounds)
 
