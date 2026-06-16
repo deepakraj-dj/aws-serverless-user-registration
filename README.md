@@ -116,6 +116,10 @@ Or visit https://d123xyz.cloudfront.net and submit the form.
 
 ### 3. Backend Deployment & Registration Success
 ![CI-CD_Pipeline_Backend_Deployment](docs/CI-CD_Pipeline_Backend_Deployment.png)
+- Checkout code
+- Install Python
+- Archiev the file in zip and gets replaced in lambda
+- Completed in 27 seconds
 
 ### 4. User Registration Response
 ![User_Registration_Response](docs/User_Registration_Response.png)
