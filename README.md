@@ -119,7 +119,7 @@ URL: d1su39mqqdhlc7.cloudfront.net
 Shows successful user registration with JWT cookie creation
 
 ### 4. User Registration Response
-![User_Registration_Response](User_Registration_Response.png)
+![User_Registration_Response](docs/User_Registration_Response.png)
 
 ## Security
 ✅ Bcrypt Hashing — Passwords never stored plain text (10 salt rounds)
