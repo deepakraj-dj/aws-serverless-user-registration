@@ -45,7 +45,7 @@ def lambda_handler(event,context):
 
     ## JWT P
     try:
-        secret_key="OKISADDDD"
+        secret_key="OKISADDD"
         ctime=datetime.datetime.now(datetime.timezone.utc)
         expi=datetime.timedelta(hours =1)
         payload={
