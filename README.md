@@ -23,7 +23,7 @@ Fully serverless auth system with zero EC2 instances. Frontend served via S3 + C
 
 Free Tier Note: DynamoDB read/write, Lambda invocations, API calls, and CloudFront transfers covered by AWS free tier. Monitor usage to avoid charges.
 
-## Get It Running 
+## How to Deploy
 
 ### Step 1: Clone & Setup
 ```bash
@@ -100,6 +100,9 @@ curl -X POST https://abc123.execute-api.us-east-1.amazonaws.com/prod/signup \
   -d '{"email":"test@example.com","password":"securepass123"}'
 ```
 Or visit https://d123xyz.cloudfront.net and submit the form.
+
+## Demo / Results
+
 
 ## Security
 ✅ Bcrypt Hashing — Passwords never stored plain text (10 salt rounds)
