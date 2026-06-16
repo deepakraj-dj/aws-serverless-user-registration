@@ -116,11 +116,10 @@ URL: d1su39mqqdhlc7.cloudfront.net
 
 ### 3. Backend Deployment & Registration Success
 ![CI-CD_Pipeline_Backend_Deployment](docs/CI-CD_Pipeline_Backend_Deployment.png)
-Shows successful user registration with JWT cookie creation
 
 ### 4. User Registration Response
 ![User_Registration_Response](docs/User_Registration_Response.png)
-
+Shows successful user registration with JWT cookie creation
 ## Security
 ✅ Bcrypt Hashing — Passwords never stored plain text (10 salt rounds)
 
