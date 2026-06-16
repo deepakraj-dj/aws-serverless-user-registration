@@ -103,6 +103,23 @@ Or visit https://d123xyz.cloudfront.net and submit the form.
 
 ## Demo / Results
 
+### 1. Frontend - Signup Form (S3 + CloudFront)
+[Image 2 - signup form screenshot]
+URL: d1su39mqqdhlc7.cloudfront.net
+
+### 2. CI/CD Pipeline - Frontend Deployment
+[Image 1 - "Deploy to S3 and CloudFront" pipeline]
+- Checkout code
+- Copy files to S3
+- Invalidate CloudFront cache
+- Completed in 6 seconds
+
+### 3. Backend Deployment & Registration Success
+[Image from first screenshot - Lambda deployment]
+Shows successful user registration with JWT cookie creation
+
+### 4. User Registration Response
+[The alert/response screenshot with "Cookie created successfully"]
 
 ## Security
 ✅ Bcrypt Hashing — Passwords never stored plain text (10 salt rounds)
