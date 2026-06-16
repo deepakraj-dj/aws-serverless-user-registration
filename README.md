@@ -105,7 +105,7 @@ Or visit https://d123xyz.cloudfront.net and submit the form.
 
 ### 1. Frontend - Signup Form (S3 + CloudFront)
 ![Frontend](docs/Frontend.png)
-[URL:d1su39mqqdhlc7.cloudfront.net](d1su39mqqdhlc7.cloudfront.net)
+[URL : d1su39mqqdhlc7.cloudfront.net](d1su39mqqdhlc7.cloudfront.net)
 
 ### 2. CI/CD Pipeline - Frontend Deployment
 ![CI_CD_Pipeline_frontend](docs/CI-CD_Pipeline_Frontend.png)
