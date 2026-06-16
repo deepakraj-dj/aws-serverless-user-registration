@@ -27,7 +27,7 @@ Free Tier Note: DynamoDB read/write, Lambda invocations, API calls, and CloudFro
 
 ### Step 1: Clone & Setup
 ```bash
-git clone https://github.com/yourusername/aws-serverless-user-registration.git
+git clone https://github.com/deepakraj-dj/aws-serverless-user-registration.git
 cd aws-serverless-user-registration
 ```
 ### Step 2: Create DynamoDB Table (Console)
