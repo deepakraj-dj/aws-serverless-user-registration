@@ -108,18 +108,18 @@ Or visit https://d123xyz.cloudfront.net and submit the form.
 URL: d1su39mqqdhlc7.cloudfront.net
 
 ### 2. CI/CD Pipeline - Frontend Deployment
-[Image 1 - "Deploy to S3 and CloudFront" pipeline]
+![CI_CD_Pipeline_frontend](docs/CI-CD_Pipeline_Frontend.png)
 - Checkout code
 - Copy files to S3
 - Invalidate CloudFront cache
 - Completed in 6 seconds
 
 ### 3. Backend Deployment & Registration Success
-[Image from first screenshot - Lambda deployment]
+![CI-CD_Pipeline_Backend_Deployment](docs/CI-CD_Pipeline_Backend_Deployment.png)
 Shows successful user registration with JWT cookie creation
 
 ### 4. User Registration Response
-[The alert/response screenshot with "Cookie created successfully"]
+![User_Registration_Response](User_Registration_Response.png)
 
 ## Security
 ✅ Bcrypt Hashing — Passwords never stored plain text (10 salt rounds)
