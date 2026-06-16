@@ -155,7 +155,11 @@ Shows successful user registration with JWT cookie creation
 ├── backend/                  
 |   └── registerform_final.py         # Lambda handler: User registration with JWT auth
 ├── docs/
-│   └── Architecture_diagram.png      # Full system architecture flo
+|   ├── Architecture_diagram.png      # Full system architecture flow
+|   ├── CI-CD_Pipeline_Backend_Deployment
+|   ├── CI-CD_Pipeline_Frontend.png
+|   ├── Frontend.png
+│   └── User_Registration_Response.png
 ├── frontend
 │   └── signup.html                   # HTML form: User registration UI
 ├── LICENSE
